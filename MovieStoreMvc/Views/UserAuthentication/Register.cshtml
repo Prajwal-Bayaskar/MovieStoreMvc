@@ -1,0 +1,63 @@
+﻿@model MovieStoreMvc.Models.DTO.RegistrationModel
+
+<form class="w-40" action="Register" method="post">
+  
+    <div class="input-container">
+        <label asp-for="Email" class="w-40" placeholder="Enter email">Email</label>
+        <input type="text" class="input" asp-for="Email">
+    </div>
+
+
+
+    
+    <div class="input-container">
+        <label asp-for="Username" class="w-40">Username</label>
+        <input type="text" class="input" asp-for="Username">
+    </div>
+
+
+   
+    <div class="input-container">
+        <label asp-for="Name" class="w-40">Name</label>
+        <input type="text" class="input" asp-for="Name">
+    </div>
+
+
+
+   
+    <div class="input-container">
+        <label asp-for="Password" class="w-40">Password</label>
+        <input type="text" class="input" asp-for="Password">
+    </div>
+
+
+
+   
+    <div class="input-container">
+        <label asp-for="PasswordConfirm" class="w-40">Confirm Password</label>
+        <input type="text" class="input" asp-for="PasswordConfirm">
+    </div>
+
+
+  
+    <div class="input-container">
+        <label asp-for="Role" class="w-40">Role</label>
+        <input type="text" class="input" asp-for="Role">
+    </div>
+
+
+   
+
+
+    @if (TempData["AlertMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["AlertMessage"]
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
+    <button type="submit" class="btn btn-sec" asp-controller="UserAuthentication" action="Register">Submit</button>
+
+</form>

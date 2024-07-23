@@ -1,0 +1,65 @@
+﻿@{
+    string username = User.Identity.Name;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MovieStore</title>
+   
+   
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/forms.css">
+  
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="logo">
+            Movie store
+        </div>
+        <ul class="nav-link">
+            <li><a class="active" href="/Home/Index">Home</a></li>
+           
+            @if (!string.IsNullOrEmpty(username))
+            {
+                <li><a href="/Movie/MovieList">Movies</a></li>
+                <li><a href="/Movie/Add">Add Movies</a></li>
+                <li><a href="/Genre/GenreList">Genres</a></li>
+                <li><a href="/Genre/Add">Add Genre</a></li>
+                <li><a href="/Home/About">About</a></li>
+                <li > <a style="color:red"  href="/UserAuthentication/Logout">Logout</a></li>
+            }
+           
+            @if(string.IsNullOrEmpty(username)){
+                <li><a href="/UserAuthentication/Login">Login</a></li>
+            }
+        </ul>
+    </nav>
+    <div class="container">
+       @RenderBody()
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <div class="container">
+        @RenderBody()
+    </div>
+    <footer>
+        &#169; @DateTime.UtcNow.Year Prajwal Bayaskar
+    </footer>
+</body>
+</html>

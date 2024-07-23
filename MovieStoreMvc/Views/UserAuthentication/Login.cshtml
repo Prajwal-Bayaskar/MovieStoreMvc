@@ -1,0 +1,59 @@
+﻿@model MovieStoreMvc.Models.DTO.LoginModel
+@{
+}
+
+
+<h1>Login Form</h1>
+
+
+
+<form class="w-40" asp-action="Login" method="post">
+  
+    <div class="input-container">
+        <label asp-for="Username" class="w-40">Username</label>
+        <input type="text" class="input" asp-for="Username">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="Username"></span>
+    </div>
+
+
+    <div class="input-container">
+        <label asp-for="Password" class="w-40">Password</label>
+        <input type="password" class="input" asp-for="Password">
+    </div>
+    <div class="message-box pd-x-28 error">
+        <span asp-validation-for="Password"></span>
+    </div>
+
+
+    @if (TempData["msg"] != null)
+    {
+        <div class="alert mb-1">
+            @TempData["msg"]
+        </div>
+    }
+    @if (TempData["AlertMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["AlertMessage"]
+            <button type="button" class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+        </div>
+    }
+
+
+    <div class="input-container">
+        <button class="btn btn-default" type="submit">Login</button>
+        <br />
+    </div>
+
+        <p class="small fw-bold mt-2 pt-1 mb-0">
+           <font color="red"> Don't have an account? <a href="/UserAuthentication/Register"
+                                      class="btn btn-sec">Register</a></font>
+        </p>
+   
+
+
+</form>
